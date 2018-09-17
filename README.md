@@ -5,6 +5,8 @@
 
 **Note:** This code now supports Julia 1.0!
 
+**IF this code helped you save time, help me out by clicking the star at the top!**
+
 Project for Aero E 504: Decision Making under Uncertainty. Course taught by Professor Peng Wei.
 This project implements the K2 Algorithm inspired by Cooper's Algorithm proposed in 1992. This code was also inspired by the Mathworks implementation written by Guangdi Li.
 
