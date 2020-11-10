@@ -261,10 +261,10 @@ function GFunction( DataObj, X, PAX )
         Sum = sum(Frequency);
         for k = 1:Integer(ri)
             if Frequency[k]!= 0
-                GFunValue = GFunValue + lgamma(Frequency[k]+1); # Nijk is equal to Frequency[k]
+                GFunValue = GFunValue + logabsgamma(Frequency[k]+1)[1]; # Nijk is equal to Frequency[k]
             end
         end
-        GFunValue = GFunValue + lgamma(ri) - lgamma(Sum + ri) ;
+        GFunValue = GFunValue + logabsgamma(ri)[1] - logabsgamma(Sum + ri)[1];
     end
 
     #GFunValue
@@ -416,7 +416,7 @@ end
 function getNames(data)
 
     #gets all the names of the variables and refomats them as an python-like array
-    newNames = reshape(names(data),length(data));
+    newNames = reshape(names(data),size(data,2));
 
     newNames
 end
