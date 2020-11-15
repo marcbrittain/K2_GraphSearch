@@ -360,9 +360,10 @@ function findOptimalGraph(DataObj,trials,data)
 
         # gets the variable names
         Names = getNames(data);
+        symbolNames = convertNames2Symbol(Names)
 
         # calculates the bayesian score
-        bayesScore = BayesScore(graph,Names,data);
+        bayesScore = BayesScore(graph,symbolNames,data);
         if bayesScore > largest_so_far
 
             # store the best configuration we have seen so far
@@ -402,6 +403,16 @@ function CreateGraph(DAG)
     end
     graph
 end
+
+function convertNames2Symbol(Names)
+    newNames = Array{Symbol,1}()
+
+    for i=1:length(Names)
+        push!(newNames,Symbol(Names[i]))
+    end
+    newNames
+end
+
 
 
 function BayesScore(graph, names, data)
@@ -475,7 +486,7 @@ function main(inputFile, trials=100, returnVar = false)
     end
 
 
-    data = CSV.read(inputFile);
+    data = CSV.read(inputFile,DataFrame);
     matrix = Matrix(data);
     DataObj = CreateDataObj(matrix, DataObj_type);
 
